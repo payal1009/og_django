@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+<h1>Enter event details</h1>
+<form action="{% url 'add' %}" method="POST">{% csrf_token %}
+    <label for="quantity">ID</label>
+    <input type="number" id="quantity" name="quantity">
+    <label for="eventname">Event name:</label></br>
+    <input type="text" id="eventname" name="eventname"><br>
+    <label for="birthday">Event Date:</label>
+    <input type="date" id="birthday" name="birthday"></br>
+    <label for="appt">Event time:</label>
+    <input type="time" id="appt" name="appt"></br>
+    Enter event description<br>
+    <textarea name="message" rows="10" cols="30"></textarea>
+    <p>
+        {{analyzed_text}}
+    </p>
+    <input type="submit" value="Submit">
+    {% block one %}
+    {% for x in data %}
+    {{x.i}}
+    {{x.name}}
+    {{x.date}}
+    {{x.time}}
+    {{x.description}}
+    {% endfor %}
+    {% endblock %}
+</form>
+</body>
+</html>
